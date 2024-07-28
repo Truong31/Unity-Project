@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7791345987406329638, guid: 5fad4bedd5b5a094e89d475ab2e794a4, type: 3}
+      propertyPath: animationSprites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7791345987406329638, guid: 5fad4bedd5b5a094e89d475ab2e794a4, type: 3}
+      propertyPath: animationSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 528a0543f9b039642a0bb6de562e64ec, type: 3}
+    - target: {fileID: -7791345987406329638, guid: 5fad4bedd5b5a094e89d475ab2e794a4, type: 3}
+      propertyPath: animationSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 93262bbf07110e5439cf822dc3847266, type: 3}
     - target: {fileID: 670527148483254764, guid: 5fad4bedd5b5a094e89d475ab2e794a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
