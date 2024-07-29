@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 856690079}
   - component: {fileID: 856690078}
   - component: {fileID: 856690081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61322ff86c75524f8e56cc163976446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserPrefabs: {fileID: -231952192306225087, guid: b3af9d74184fdf94e90ecb138cf0fc00, type: 3}
   speed: 5
 --- !u!1 &1123648570
 GameObject:
@@ -653,9 +654,34 @@ MonoBehaviour:
   - {fileID: 2085963999494019466, guid: f8b530ecb5c5db348b64f31fd2faca7b, type: 3}
   - {fileID: 2085963999494019466, guid: f8b530ecb5c5db348b64f31fd2faca7b, type: 3}
   - {fileID: 5777744180823214868, guid: ed6ecd84170c4e24f89f953b187c5844, type: 3}
-  speed: 1
+  missilePrefab: {fileID: 2584153360162163087, guid: 3d7c1c88c6e394843a9afb17910e2cca, type: 3}
+  speed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 1.0623629
+      outSlope: 1.0623629
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08593711
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.27629423
+      outSlope: -0.27629423
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09752932
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   rows: 5
   columns: 11
+  missileAttackRate: 1
 --- !u!4 &1123648572
 Transform:
   m_ObjectHideFlags: 0
@@ -948,7 +974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427280498}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -15.5, z: 0}
   m_LocalScale: {x: 30, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1060,7 +1086,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e370a2c685873894b827cb6a5cd6ab6c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1096,6 +1122,7 @@ GameObject:
   - component: {fileID: 1676290169}
   - component: {fileID: 1676290168}
   - component: {fileID: 1676290167}
+  - component: {fileID: 1676290170}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: Untagged
@@ -1215,6 +1242,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1676290170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676290166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e4c836ffb60e148839b9baede04a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1227,5 +1266,5 @@ SceneRoots:
   - {fileID: 1676290169}
   - {fileID: 1497558282}
   - {fileID: 1327780244}
-  - {fileID: 1427280500}
   - {fileID: 1123648572}
+  - {fileID: 1427280500}

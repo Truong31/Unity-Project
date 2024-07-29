@@ -1,16 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Invaders : MonoBehaviour
 {
     public Invader[] prefabs;
+    public Projectile missilePrefab;
 
-    public float speed = 1.0f;
+    public AnimationCurve speed;
     public int rows = 5;
     public int columns = 11;
 
     private Vector3 direction = Vector2.right;
+
+    public float missileAttackRate = 1.0f;
+
+    public int amountKilled { get; private set; }
+    public int amountAlive => this.totalInvaders - this.amountKilled;
+    public int totalInvaders => this.rows * this.columns;
+    public float percentKilled => (float)this.amountKilled / (float)this.totalInvaders;
     private void Awake()
     {
         for(int row = 0; row < this.rows; row++)
@@ -22,15 +31,21 @@ public class Invaders : MonoBehaviour
             for(int col = 0; col < this.columns; col++)
             {
                 Invader invader = Instantiate(this.prefabs[row], this.transform);
+                invader.killed += InvaderKilled;
                 Vector3 postion = rowPosition;
                 postion.x += col * 2.0f;
                 invader.transform.localPosition = postion;
             }
         }
     }
+
+    private void Start()
+    {
+        InvokeRepeating(nameof(MissileAttack), this.missileAttackRate, this.missileAttackRate);
+    }
     private void Update()
     {
-        this.transform.position += this.direction * this.speed * Time.deltaTime;
+        this.transform.position += this.direction * this.speed.Evaluate(this.percentKilled) * Time.deltaTime;
 
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
@@ -57,5 +72,30 @@ public class Invaders : MonoBehaviour
         Vector3 position = this.transform.position;
         position.y -= 1.0f;
         this.transform.position = position;
+    }
+    
+    private void InvaderKilled()
+    {
+        this.amountKilled++;
+        if(this.amountKilled >= this.totalInvaders)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private void MissileAttack()
+    {
+        foreach(Transform invader in this.transform)
+        {
+            if (!invader.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+            if(Random.value < (1.0f / (float)this.amountAlive))
+            {
+                Instantiate(this.missilePrefab, invader.position, Quaternion.identity);
+                break;
+            }
+        }
     }
 }
