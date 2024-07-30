@@ -629,6 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1123648572}
   - component: {fileID: 1123648571}
+  - component: {fileID: 1123648573}
   m_Layer: 0
   m_Name: Invaders
   m_TagString: Untagged
@@ -697,6 +698,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1123648573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123648570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb8b5b9c9a96af4fbbd2c6ddf2d71d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
+  projectile: {fileID: 0}
+  player: {fileID: 0}
+  invader: {fileID: 0}
 --- !u!1 &1327780242
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1009,7 @@ GameObject:
   - component: {fileID: 1497558282}
   - component: {fileID: 1497558281}
   - component: {fileID: 1497558280}
+  - component: {fileID: 1497558283}
   m_Layer: 0
   m_Name: MysteryShip
   m_TagString: Untagged
@@ -1111,6 +1129,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1497558283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497558279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b47b3b8ceccc149998967e6ec8eedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1676290166
 GameObject:
   m_ObjectHideFlags: 0

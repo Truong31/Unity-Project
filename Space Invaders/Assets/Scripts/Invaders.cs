@@ -20,6 +20,7 @@ public class Invaders : MonoBehaviour
     public int amountAlive => this.totalInvaders - this.amountKilled;
     public int totalInvaders => this.rows * this.columns;
     public float percentKilled => (float)this.amountKilled / (float)this.totalInvaders;
+
     private void Awake()
     {
         for(int row = 0; row < this.rows; row++)
