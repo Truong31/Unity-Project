@@ -12,6 +12,8 @@ public class Invader : MonoBehaviour
 
     public System.Action killed;
 
+    public GameManager gameManager;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,6 +36,7 @@ public class Invader : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
+            FindObjectOfType<GameManager>().Scoring();
             this.killed.Invoke();
             this.gameObject.SetActive(false);
         }

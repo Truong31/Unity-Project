@@ -15,11 +15,12 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             this.transform.position += Vector3.left * this.speed * Time.deltaTime;
-        }else if (Input.GetKey(KeyCode.D)| Input.GetKey(KeyCode.RightArrow))
+        }
+        else if (Input.GetKey(KeyCode.D) | Input.GetKey(KeyCode.RightArrow))
         {
             this.transform.position += Vector3.right * this.speed * Time.deltaTime;
         }
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             Shoot();
         }
@@ -41,10 +42,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Missile")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Missile")
             || collision.gameObject.layer == LayerMask.NameToLayer("Invader"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            FindObjectOfType<GameManager>().Died();
         }
     }
 }
