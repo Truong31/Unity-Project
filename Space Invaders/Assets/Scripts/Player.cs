@@ -12,11 +12,11 @@ public class Player : MonoBehaviour
     private bool laserActive;
     private void Update()
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && this.transform.position.x > -14.5f)
         {
             this.transform.position += Vector3.left * this.speed * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.D) | Input.GetKey(KeyCode.RightArrow))
+        else if ((Input.GetKey(KeyCode.D) | Input.GetKey(KeyCode.RightArrow)) && this.transform.position.x < 14.5f)
         {
             this.transform.position += Vector3.right * this.speed * Time.deltaTime;
         }
