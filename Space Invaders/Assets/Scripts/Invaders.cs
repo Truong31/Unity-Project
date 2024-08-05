@@ -25,17 +25,24 @@ public class Invaders : MonoBehaviour
     {
         for(int row = 0; row < this.rows; row++)
         {
-            float width = 2.0f * (this.columns - 1);
+            float width = 2.0f * (this.columns - 1);        //Tong chieu rong cua mang luoi
+                                                            //(moi invader se chiem 2 o chieu rong ==> nhan 2.0f)
             float height = 2.0f * (this.rows - 1);
-            Vector2 centering = new Vector2(-width/2, -height/2);
-            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 2.0f), 0.0f);
+            Vector2 centering = new Vector2(-width/2, -height/2);       // Xac dinh vi tri chinh giua cua luoi
+            Vector3 rowPosition = new Vector3(centering.x, centering.y + (row * 2.0f), 0.0f);       //Vi tri hien tai cua mang luoi
+                                                                                                    //(row * 2.0f: khoang cach giua cac hang la 2 o)
             for(int col = 0; col < this.columns; col++)
             {
-                Invader invader = Instantiate(this.prefabs[row], this.transform);
-                invader.killed += InvaderKilled;
+                Invader invader = Instantiate(this.prefabs[row], this.transform);       // Copy 1 mau invader cho 1 hang(moi hang se co 1 mau invader khac nhau)
+                invader.killed += InvaderKilled;        // Moi khi 1 invader bi tieu diet(khi invader va cham voi laser cua player)
+                                                        //, phuong thuc InvaderKilled se duoc goi
                 Vector3 postion = rowPosition;
                 postion.x += col * 2.0f;
-                invader.transform.localPosition = postion;
+                invader.transform.localPosition = postion;      //  ".localPosition": vi tri cuc bo(vi tri cua vat the con so voi vat the cha),
+                                                                //noi cach khac là vi tri cua cac invader con(invader da duoc copy)
+                                                                //so voi vi tri cua rowPosition.
+                                                                // Khac voi ".position" (vi tri toan canh). Day la vi tri cua vat the
+                                                                //so voi toan bo canh(Scene)
             }
         }
     }
@@ -52,7 +59,7 @@ public class Invaders : MonoBehaviour
         Vector3 rightEdge = Camera.main.ViewportToWorldPoint(Vector3.right);
         foreach(Transform invader in this.transform)
         {
-            if (!invader.gameObject.activeInHierarchy)
+            if (!invader.gameObject.activeInHierarchy) // Kiem tra xem doi tuong co dang hoat dong
             {
                 continue;
             }
