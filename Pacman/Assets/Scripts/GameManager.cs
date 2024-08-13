@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && this.live <= 0)
+        if (Input.anyKeyDown && this.live <= 0)
         {
             NewGame();
         }
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void NewRound()
     {
-        foreach(Transform pellet in this.pellets)
+        foreach (Transform pellet in this.pellets)
         {
             pellet.gameObject.SetActive(true);
         }
@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
         ResetGhostMultiplier();
         for (int i = 0; i < this.ghost.Length; i++)
         {
-            this.ghost[i].gameObject.SetActive(true);
+            this.ghost[i].ResetState();
         }
-        this.pacman.gameObject.SetActive(true);
+        this.pacman.ResetState();
     }
 
     private void GameOver()
@@ -91,11 +91,6 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        if (!HasRemainingPellet())
-        {
-            this.pacman.gameObject.SetActive(false);
-            Invoke(nameof(NewRound), 3.0f);
-        }
     }
     public void PelletEaten(Pellet pellet)
     {
@@ -104,6 +99,7 @@ public class GameManager : MonoBehaviour
 
         if (!HasRemainingPellet())
         {
+            this.pacman.gameObject.SetActive(false);
             Invoke(nameof(NewRound), 3.0f);
         }
     }
