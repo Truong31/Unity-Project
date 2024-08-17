@@ -79,11 +79,13 @@ public class GameManager : MonoBehaviour
     }
     public void PacmanEaten()
     {
-        this.pacman.gameObject.SetActive(false);
-
+        this.pacman.PacmanDied();
+        for (int i = 0; i < this.ghost.Length; i++)
+        {
+            this.ghost[i].gameObject.SetActive(false);
+        }
         SetLives(this.live - 1);
-
-        if(this.live > 0)
+        if (this.live > 0)
         {
             Invoke(nameof(ResetState), 3.0f);
         }

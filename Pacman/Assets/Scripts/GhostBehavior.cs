@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Ghost))]
@@ -12,10 +12,13 @@ public abstract class GhostBehavior : MonoBehaviour
         this.enabled = false;
     }
 
+    // Kích hoạt đối tượng trong khoảng thời gian đã được định sẵn
     public void Enable()
     {
         Enable(this.duration);
     }
+
+    // Kích hoạt đối tượng trong khoảng thời gian cụ thể, sẽ bị vô hiệu hóa khi hết thời gian
     public virtual void Enable(float duration)
     {
         this.enabled = true;

@@ -5,12 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class AnimatedSprite : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer { get; private set; }
-    public Sprite[] sprites;
+    private SpriteRenderer spriteRenderer;
+    public Sprite[] sprites = new Sprite[0];
     public float animationTime = 0.25f;
     public int animationFrame { get; private set; }
     public bool loop = true;
 
+
+    private void OnEnable()
+    {
+        this.spriteRenderer.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        this.spriteRenderer.enabled = false;
+    }
     private void Awake()
     {
         this.spriteRenderer = GetComponent<SpriteRenderer>();
@@ -42,4 +52,5 @@ public class AnimatedSprite : MonoBehaviour
         this.animationFrame = -1;
         Advance();
     }
+
 }

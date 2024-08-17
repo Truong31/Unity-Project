@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ public class GhostFrightened : GhostBehavior
     public SpriteRenderer eyes;
     public SpriteRenderer blue;
     public SpriteRenderer white;
+
 
     public bool eaten { get; private set; }
 
@@ -49,6 +50,8 @@ public class GhostFrightened : GhostBehavior
         this.white.enabled = false;
     }
 
+
+    //Tạo nhấp nháy cho Ghost khi sắp hết thời gian bị Frightened
     private void Flash()
     {
         if (!this.eaten)
