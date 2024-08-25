@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 28841583}
   - component: {fileID: 28841582}
   - component: {fileID: 28841581}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Indestructible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2274,6 +2274,7 @@ GameObject:
   - component: {fileID: 99990934}
   - component: {fileID: 99990933}
   - component: {fileID: 99990937}
+  - component: {fileID: 99990938}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2435,6 +2436,28 @@ MonoBehaviour:
   spriteRendererDown: {fileID: 594398308}
   spriteRendererLeft: {fileID: 539785440}
   spriteRendererRight: {fileID: 184672628}
+--- !u!114 &99990938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99990932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02306b973139043459eda778bb01bce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 2994353221874955531, guid: 548f8c67bbd9b644aa48137872aa93a2, type: 3}
+  inputKey: 32
+  bombFuseTime: 3
+  bombAmount: 2
+  explosionPrefab: {fileID: -232486004748617080, guid: f518e8e4070010a49810dd47c23be79f, type: 3}
+  explosionLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  explosionDuration: 1
+  explosionRadius: 1
 --- !u!1 &184672625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2538,6 +2561,7 @@ MonoBehaviour:
   - {fileID: -1462248136, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: -5840786, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: -1178110920, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
+  animationTime: 0.25
   loop: 1
   idle: 1
 --- !u!1 &199019653
@@ -2643,6 +2667,7 @@ MonoBehaviour:
   - {fileID: 1442578743, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: 1258516336, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: -266087449, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
+  animationTime: 0.25
   loop: 1
   idle: 1
 --- !u!1 &265469670
@@ -2655,7 +2680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265469672}
   - component: {fileID: 265469671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2886,6 +2911,7 @@ MonoBehaviour:
   - {fileID: 1808038572, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: 1168594606, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: -1755885247, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
+  animationTime: 0.25
   loop: 1
   idle: 1
 --- !u!1 &594398305
@@ -2991,6 +3017,7 @@ MonoBehaviour:
   - {fileID: 772863004, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: 735411231, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
   - {fileID: 1763232502, guid: 7c979daa480d9ce4ea07b0346f8e8b6c, type: 3}
+  animationTime: 0.25
   loop: 1
   idle: 1
 --- !u!1 &1291572561
@@ -3005,7 +3032,7 @@ GameObject:
   - component: {fileID: 1291572565}
   - component: {fileID: 1291572564}
   - component: {fileID: 1291572563}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destructible
   m_TagString: Untagged
   m_Icon: {fileID: 0}

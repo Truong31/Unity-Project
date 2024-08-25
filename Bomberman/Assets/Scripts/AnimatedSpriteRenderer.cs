@@ -9,7 +9,7 @@ public class AnimatedSpriteRenderer : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private int currentSprite = 0;
-    private float animationTime = 0.25f;
+    public float animationTime = 0.25f;
 
     public bool loop = true;
     public bool idle = true;        //Check xem nhan vat co dang dung yen
