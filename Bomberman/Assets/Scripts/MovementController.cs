@@ -17,6 +17,7 @@ public class MovementController : MonoBehaviour
     public AnimatedSpriteRenderer spriteRendererDown;
     public AnimatedSpriteRenderer spriteRendererLeft;
     public AnimatedSpriteRenderer spriteRendererRight;
+    public AnimatedSpriteRenderer spriteRendererDeath;
     private AnimatedSpriteRenderer activeSpriteRenderer;
 
 
@@ -110,5 +111,33 @@ public class MovementController : MonoBehaviour
         //{
         //    this.activeSpriteRenderer.idle = false;
         //}
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Explosion"))
+        {
+            DeathSequence();
+        }
+    }
+
+    private void DeathSequence()
+    {
+        this.enabled = false;
+        GetComponent<BombController>().enabled = false;
+
+        this.spriteRendererDown.enabled = false;
+        this.spriteRendererUp.enabled = false;
+        this.spriteRendererLeft.enabled = false;
+        this.spriteRendererRight.enabled = false;
+        this.spriteRendererDeath.enabled = true;
+
+        Invoke(nameof(OnDeathSequenceEnded), 1.25f);
+    }
+
+    private void OnDeathSequenceEnded()
+    {
+        this.gameObject.SetActive(false);
+        FindObjectOfType<GameManager>().CheckWinState();
     }
 }

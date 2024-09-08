@@ -8,6 +8,7 @@ public class Explosion : MonoBehaviour
     public AnimatedSpriteRenderer middle;
     public AnimatedSpriteRenderer end;
 
+    //Set hoat hoa cho vu no
     public void SetActiveRenderer(AnimatedSpriteRenderer renderer)
     {
         this.start.enabled = renderer == this.start;
@@ -15,6 +16,7 @@ public class Explosion : MonoBehaviour
         this.end.enabled = renderer == this.end;
     }
 
+    //Tinh toan huong cua vu no
     public void SetDirection(Vector2 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x);

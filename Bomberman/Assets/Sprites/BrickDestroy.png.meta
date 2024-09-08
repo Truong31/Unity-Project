@@ -235,6 +235,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: BrickDestroy_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c554a29b96ab7d640ab1294dafe8f637
+      internalID: -1624680745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -252,6 +273,7 @@ TextureImporter:
       BrickDestroy_3: 1743908094
       BrickDestroy_4: -364116460
       BrickDestroy_5: 1420840790
+      BrickDestroy_6: -1624680745
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
