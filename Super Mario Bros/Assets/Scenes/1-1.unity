@@ -5321,7 +5321,7 @@ PrefabInstance:
     - target: {fileID: -4132282107921226147, guid: 1d45f6941d1c5934abd80363058181f6, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 5272983503283213894, guid: c886be74acc333249a77305735798b1b, type: 3}
+      objectReference: {fileID: 9094647665365542885, guid: ae758e8a09d624841a6eb844bc65509c, type: 3}
     - target: {fileID: -4132282107921226147, guid: 1d45f6941d1c5934abd80363058181f6, type: 3}
       propertyPath: maxHit
       value: 1
@@ -8523,6 +8523,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4208712583485142, guid: 2c2c90e8f5c916147b892b4cb6862273, type: 3}
   m_PrefabInstance: {fileID: 810291189}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1845584370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6604966619429758154, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
+  m_PrefabInstance: {fileID: 2587161803905796167}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9433e4297e0d1b489899b97ec867352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1853897614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9819,7 +9830,7 @@ PrefabInstance:
     - target: {fileID: 1056698293888572861, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
       propertyPath: run
       value: 
-      objectReference: {fileID: 21300000, guid: 6f6d440defea53f478bc1b6012bd2329, type: 3}
+      objectReference: {fileID: 1845584370}
     - target: {fileID: 1056698293888572861, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
       propertyPath: idle
       value: 
@@ -9868,6 +9879,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6495240394576632280, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7221690004197553595, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -9915,6 +9930,10 @@ PrefabInstance:
     - target: {fileID: 8009053912222838547, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8009053912222838547, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

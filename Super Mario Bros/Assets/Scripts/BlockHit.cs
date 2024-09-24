@@ -14,7 +14,8 @@ public class BlockHit : MonoBehaviour
     {
         if (!animating && collision.gameObject.CompareTag("Player"))
         {
-            if(collision.transform.DotTest(transform, Vector2.up))
+            PlayerState player = collision.gameObject.GetComponent<PlayerState>();
+            if (collision.transform.DotTest(transform, Vector2.up))
             {
                 Hit();
             }
