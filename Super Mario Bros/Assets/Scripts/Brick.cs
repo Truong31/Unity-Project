@@ -6,7 +6,7 @@ public class Brick : MonoBehaviour
 {
     public GameObject brickBrokenPrefabs;
     public float explosionForce = 10;
-    private void BreakBrickAnimation(GameObject brick)
+    public void BreakBrickAnimation(GameObject brick)
     {
         GameObject brokenBrick = Instantiate(brickBrokenPrefabs, brick.transform.position, Quaternion.identity);
 
@@ -23,21 +23,5 @@ public class Brick : MonoBehaviour
             }
         }
         Destroy(gameObject);
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerState player = collision.gameObject.GetComponent<PlayerState>();
-            SpriteRenderer sprite = this.gameObject.GetComponent<SpriteRenderer>();
-            BlockHit block = this.gameObject.GetComponent<BlockHit>();
-            if (collision.transform.DotTest(transform, Vector2.up) && player.big)
-            { 
-                if (block.maxHit < 0)
-                {
-                    BreakBrickAnimation(gameObject);
-                }
-            }
-        }
     }
 }

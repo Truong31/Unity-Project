@@ -118,4 +118,25 @@ public class PlayerState : MonoBehaviour
         activeRenderer.spriteRenderer.color = Color.white;
         starPower = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Brick"))
+        {
+            Brick brick = collision.gameObject.GetComponent<Brick>();
+            SpriteRenderer sprite = collision.gameObject.GetComponent<SpriteRenderer>();
+            BlockHit block = collision.gameObject.GetComponent<BlockHit>();
+            if (collision.transform.DotTest(transform, Vector2.down) && big)
+            {
+                if (block.maxHit < 0)
+                {
+                    brick.BreakBrickAnimation(collision.gameObject);
+                }
+                if(block.maxHit == 0)
+                {
+                    collision.gameObject.tag = "Untagged";
+                }
+            }
+        }
+    }
 }
