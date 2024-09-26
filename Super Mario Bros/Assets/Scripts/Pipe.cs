@@ -27,6 +27,9 @@ public class Pipe : MonoBehaviour
         yield return Move(player, enteredPosition, enteredScale);
         yield return new WaitForSeconds(1f);
 
+        bool underground = connection.position.y < 0;
+        Camera.main.GetComponent<SideScrolling>().SetUnderGround(underground);
+
         if(exitDirection != Vector3.zero)
         {
             player.position = connection.position - exitDirection;
@@ -43,8 +46,8 @@ public class Pipe : MonoBehaviour
 
     private IEnumerator Move(Transform player, Vector3 endPosition, Vector3 endScale)
     {
-        float elapsed = 0f;
-        float duration = 1f;
+        float elapsed = 0f;     //Thoi gian troi qua
+        float duration = 1f;    //tong khoang thoi gian di chuyen
 
         Vector3 startPosition = player.position;
         Vector3 startScale = player.localScale;
