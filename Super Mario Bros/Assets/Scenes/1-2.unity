@@ -9782,10 +9782,6 @@ PrefabInstance:
       propertyPath: castle
       value: 
       objectReference: {fileID: 1398891920}
-    - target: {fileID: 7807728128257236593, guid: 3bb3c67e5baa4cf46bb3841c898306ae, type: 3}
-      propertyPath: nextStage
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11307,7 +11303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7221690004197553595, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 191
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7221690004197553595, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
       propertyPath: m_LocalPosition.y

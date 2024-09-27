@@ -6,6 +6,7 @@ public class MarioMovement : MonoBehaviour
 {
     private new Camera camera;
     private new Rigidbody2D rigidbody;
+    private new Collider2D collider;
 
     private float inputAxis;
     private Vector2 velocity;
@@ -23,8 +24,26 @@ public class MarioMovement : MonoBehaviour
     public bool sliding => (inputAxis > 0f && velocity.x < 0f) || (inputAxis < 0f && velocity.x > 0f);
     private void Awake()
     {
+        collider = GetComponent<Collider2D>();
         this.rigidbody = GetComponent<Rigidbody2D>();
         camera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        rigidbody.isKinematic = false;
+        jumping = false;
+        collider.enabled = true;
+        velocity = Vector2.zero;
+    }
+
+    private void OnDisable()
+    {
+        rigidbody.isKinematic = true;
+        collider.enabled = false;
+        velocity = Vector2.zero;
+        jumping = false;
+        
     }
     private void Update()
     {

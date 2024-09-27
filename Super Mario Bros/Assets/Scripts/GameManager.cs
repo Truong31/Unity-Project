@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /*
+     FireFlower, giu Mario o trang thai Grown khi sang man moi
+     Khi o trang thai Grown, Mario co the nhay cao hon
+     Them sound, UI
+     Chuyen doi giua cac man(chuyen doi World va Stage, chet o man nao thi hoi sinh o man do)
+     */
     public static GameManager Instance { get; private set; }
 
     public int world { get; private set; }
@@ -40,7 +46,7 @@ public class GameManager : MonoBehaviour
         coins = 0;
         LoadLevel(1, 1);
     }
-    private void LoadLevel(int world, int stage)
+    public void LoadLevel(int world, int stage)
     {
         this.world = world;
         this.stage = stage;
