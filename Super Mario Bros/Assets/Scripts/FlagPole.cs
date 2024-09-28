@@ -10,6 +10,8 @@ public class FlagPole : MonoBehaviour
     public float speed = 6f;
     public int nextWorld = 1;
     public int nextStage = 1;
+
+    public AudioClip newStageSound;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -23,6 +25,9 @@ public class FlagPole : MonoBehaviour
     {
         player.GetComponent<MarioMovement>().enabled = false;
 
+        GameManager.Instance.audioSource.Stop();
+        AudioSource.PlayClipAtPoint(newStageSound, transform.position);
+
         yield return MoveTo(player, poleBottom.position);
         yield return MoveTo(player, player.position + Vector3.right);
         yield return MoveTo(player, player.position + Vector3.right + Vector3.down);
@@ -30,7 +35,7 @@ public class FlagPole : MonoBehaviour
 
         player.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(6f);
 
         GameManager.Instance.LoadLevel(nextWorld, nextStage);
     }

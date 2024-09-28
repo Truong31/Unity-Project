@@ -5,6 +5,7 @@ using UnityEngine;
 public class Goomba : MonoBehaviour
 {
     public Sprite flatSprite;
+    public AudioClip kickSound;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,6 +34,7 @@ public class Goomba : MonoBehaviour
     }
     private void Flatten()
     {
+        AudioSource.PlayClipAtPoint(kickSound, transform.position);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<EntityMovement>().enabled = false;
         GetComponent<AnimatedSprite>().enabled = false;       
@@ -42,6 +44,7 @@ public class Goomba : MonoBehaviour
 
     private void Hit()
     {
+        AudioSource.PlayClipAtPoint(kickSound, transform.position);
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
         Destroy(gameObject, 3f);

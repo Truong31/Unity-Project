@@ -6,6 +6,8 @@ public class Brick : MonoBehaviour
 {
     public GameObject brickBrokenPrefabs;
     public float explosionForce = 10;
+
+    public AudioClip breakBickSound;
     public void BreakBrickAnimation(GameObject brick)
     {
         GameObject brokenBrick = Instantiate(brickBrokenPrefabs, brick.transform.position, Quaternion.identity);
@@ -22,6 +24,7 @@ public class Brick : MonoBehaviour
                 rigidbody.AddForce(explosionDirection.normalized * force, ForceMode2D.Impulse);
             }
         }
+        AudioSource.PlayClipAtPoint(breakBickSound, transform.position);
         Destroy(gameObject);
     }
 }

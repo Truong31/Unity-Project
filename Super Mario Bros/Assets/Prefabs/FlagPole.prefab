@@ -129,6 +129,9 @@ MonoBehaviour:
   poleBottom: {fileID: 552620197334881354}
   castle: {fileID: 0}
   speed: 6
+  nextWorld: 1
+  nextStage: 1
+  newStageSound: {fileID: 8300000, guid: 4d03076aed02c5c43b4387780870f92a, type: 3}
 --- !u!1 &6652181389722021126
 GameObject:
   m_ObjectHideFlags: 0

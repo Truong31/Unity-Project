@@ -195,6 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flatSprite: {fileID: 21300000, guid: 35066740ebf815941ba336398153aabb, type: 3}
+  kickSound: {fileID: 8300000, guid: b88b312014aba7142b814a4e923f1ad0, type: 3}
+  mariodieSound: {fileID: 8300000, guid: 2400beeed8b294d4791fd042679dd853, type: 3}
 --- !u!114 &-6068512226206877406
 MonoBehaviour:
   m_ObjectHideFlags: 0

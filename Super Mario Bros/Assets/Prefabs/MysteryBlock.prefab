@@ -143,3 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c09aeaa6fc00cf644bb8140f1d035645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  maxHit: -1
+  emptySprite: {fileID: 0}
+  powerUpAppearSound: {fileID: 8300000, guid: 7990407bbc139b74ea772e57f5d4fdfd, type: 3}

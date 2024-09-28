@@ -10,6 +10,8 @@ public class BlockHit : MonoBehaviour
 
     private bool animating;
 
+    public AudioClip powerUpAppearSound;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!animating && collision.gameObject.CompareTag("Player"))
@@ -24,6 +26,7 @@ public class BlockHit : MonoBehaviour
 
     private void Hit()
     {
+        BlockCoin blockCoin = GetComponent<BlockCoin>();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true;
 
@@ -34,6 +37,11 @@ public class BlockHit : MonoBehaviour
         }
         if(item != null && maxHit >= 0)
         {
+            
+            if(!item.gameObject.CompareTag("BlockCoin"))
+            {
+                AudioSource.PlayClipAtPoint(powerUpAppearSound, transform.position);
+            }
             Instantiate(item, transform.position, Quaternion.identity);
         }
 

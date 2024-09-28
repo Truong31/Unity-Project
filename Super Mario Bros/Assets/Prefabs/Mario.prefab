@@ -115,6 +115,7 @@ MonoBehaviour:
   moveSpeed: 8
   maxJumpHeight: 5
   maxJumpTime: 1
+  jumpSound: {fileID: 8300000, guid: f8ba022aa81983145a581c493070b72d, type: 3}
 --- !u!114 &2407615301695705292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,6 +144,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallRenderer: {fileID: 6402301892804310540}
   bigRenderer: {fileID: 1056698293888572861}
+  powerUpSound: {fileID: 8300000, guid: 7c66c45ab3a423e48895108db3fdc9fa, type: 3}
+  losePowerUpSound: {fileID: 8300000, guid: a95eabb94ada3f448a3c46104735f336, type: 3}
+  mariodieSound: {fileID: 8300000, guid: 2400beeed8b294d4791fd042679dd853, type: 3}
+  bumpSound: {fileID: 8300000, guid: c414c2ed7861cf342a8573a6cfc4ceea, type: 3}
 --- !u!1 &6495240394576632280
 GameObject:
   m_ObjectHideFlags: 0

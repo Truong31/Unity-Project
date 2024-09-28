@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     /*
      FireFlower, giu Mario o trang thai Grown khi sang man moi
-     Khi o trang thai Grown, Mario co the nhay cao hon
      Them sound, UI
      Chuyen doi giua cac man(chuyen doi World va Stage, chet o man nao thi hoi sinh o man do)
      */
@@ -17,6 +16,16 @@ public class GameManager : MonoBehaviour
     public int stage { get; private set; }
     public int lives { get; private set; }
     public int coins { get; private set; }
+
+    private bool isMuted = false;
+
+    public AudioClip mariodieSound;
+    public AudioClip gameOverSound;
+    public AudioClip newStageSound;
+    public AudioClip newWorldSound;
+    public AudioClip backGroundSond;
+    public AudioSource audioSource;
+    public AudioSource coinSound;
     private void Awake()
     {
         if(Instance != null)
@@ -40,6 +49,14 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         NewGame();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Muted();
+        }
+    }
     private void NewGame()
     {
         lives = 3;
@@ -48,9 +65,11 @@ public class GameManager : MonoBehaviour
     }
     public void LoadLevel(int world, int stage)
     {
+        audioSource.clip = backGroundSond;
+        audioSource.loop = true;
+        audioSource.Play();
         this.world = world;
         this.stage = stage;
-
         SceneManager.LoadScene($"{world}-{stage}");     //Chuoi noi suy
                                                         //$"{world}-{stage}" = "world + "-" + stage"
     }
@@ -71,19 +90,29 @@ public class GameManager : MonoBehaviour
     private void NextLevel()
     {
         LoadLevel(world, stage + 1);
+        audioSource.clip = newStageSound;
+        audioSource.loop = false;
+        audioSource.Play();
     }
-    public void ResetLevel(float delay)
+    public void ResetLevelAfter(float delay)
     {
+        audioSource.clip = mariodieSound;
+        audioSource.loop = false;
+        audioSource.Play();
         Invoke(nameof(ResetLevel), delay);
     }
 
     private void GameOver()
     {
-        Invoke(nameof(NewGame), 3f);
+        Invoke(nameof(NewGame), 4f);
+        audioSource.clip = gameOverSound;
+        audioSource.loop = false;
+        audioSource.Play();
     }
 
     public void AddCoin()
     {
+        coinSound.Play();
         coins++;
         if(coins == 100)
         {
@@ -95,5 +124,11 @@ public class GameManager : MonoBehaviour
     public void AddLife()
     {
         lives++;
+    }
+
+    public void Muted()
+    {
+        isMuted = !isMuted;
+        AudioListener.volume = isMuted ? 0 : 1;
     }
 }

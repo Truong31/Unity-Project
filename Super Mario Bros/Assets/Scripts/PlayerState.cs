@@ -16,6 +16,10 @@ public class PlayerState : MonoBehaviour
     public bool dead => deathAnimation.enabled;
     public bool starPower { get; private set; }
 
+    public AudioClip powerUpSound;
+    public AudioClip losePowerUpSound;
+    public AudioClip bumpSound;
+
     private void Awake()
     {
         deathAnimation = GetComponent<DeathAnimation>();
@@ -29,10 +33,12 @@ public class PlayerState : MonoBehaviour
         {
             if (big)
             {
+                AudioSource.PlayClipAtPoint(losePowerUpSound, transform.position);
                 Shrink();
             }
             else
             {
+                
                 Death();
             }
         }
@@ -44,7 +50,7 @@ public class PlayerState : MonoBehaviour
         bigRenderer.enabled = false;
         deathAnimation.enabled = true;
 
-        GameManager.Instance.ResetLevel(3.0f);
+        GameManager.Instance.ResetLevelAfter(3.0f);
     }
 
 
@@ -57,6 +63,9 @@ public class PlayerState : MonoBehaviour
         capsuleCollider.size = new Vector2(1f, 1f);
         capsuleCollider.offset = new Vector2(0f, 0f);
 
+        MarioMovement mario = GetComponent<MarioMovement>();
+        mario.maxJumpHeight = 5f;
+
         StartCoroutine(ScaleAnimation());
     }
 
@@ -68,6 +77,11 @@ public class PlayerState : MonoBehaviour
 
         capsuleCollider.size = new Vector2(1f, 2f);
         capsuleCollider.offset = new Vector2(0f, 0.5f);
+
+        AudioSource.PlayClipAtPoint(powerUpSound, transform.position);
+
+        MarioMovement mario = GetComponent<MarioMovement>();
+        mario.maxJumpHeight = 5.5f;
 
         StartCoroutine(ScaleAnimation());
     }
@@ -96,6 +110,7 @@ public class PlayerState : MonoBehaviour
 
     public void StarPower(float duration = 10f)
     {
+        AudioSource.PlayClipAtPoint(powerUpSound, transform.position);
         StartCoroutine(StarPowerAnimation(duration));
     }
 
@@ -126,15 +141,18 @@ public class PlayerState : MonoBehaviour
             Brick brick = collision.gameObject.GetComponent<Brick>();
             SpriteRenderer sprite = collision.gameObject.GetComponent<SpriteRenderer>();
             BlockHit block = collision.gameObject.GetComponent<BlockHit>();
-            if (collision.transform.DotTest(transform, Vector2.down) && big)
-            {
-                if (block.maxHit < 0)
+            if (collision.transform.DotTest(transform, Vector2.down)){
+                AudioSource.PlayClipAtPoint(bumpSound, transform.position);
+                if(big)
                 {
-                    brick.BreakBrickAnimation(collision.gameObject);
-                }
-                if(block.maxHit == 0)
-                {
-                    collision.gameObject.tag = "Untagged";
+                    if (block.maxHit < 0)
+                    {
+                        brick.BreakBrickAnimation(collision.gameObject);
+                    }
+                    else if(block.maxHit == 0)
+                    {
+                        collision.gameObject.tag = "Untagged";
+                    }
                 }
             }
         }

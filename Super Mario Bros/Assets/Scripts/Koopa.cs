@@ -8,6 +8,8 @@ public class Koopa : MonoBehaviour
     public float shellSpeed = 12f;
     private bool shelled;
     private bool pushed;
+
+    public AudioClip kickSound;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!shelled && collision.gameObject.CompareTag("Player"))
@@ -55,6 +57,7 @@ public class Koopa : MonoBehaviour
     private void EnterShell()
     {
         shelled = true;
+        AudioSource.PlayClipAtPoint(kickSound, transform.position);
 
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<EntityMovement>().enabled = false;
@@ -64,6 +67,7 @@ public class Koopa : MonoBehaviour
     private void PushShell(Vector2 direction)
     {
         pushed = true;
+        AudioSource.PlayClipAtPoint(kickSound, transform.position);
 
         GetComponent<Rigidbody2D>().isKinematic = false;
         EntityMovement movement = GetComponent<EntityMovement>();
@@ -76,6 +80,7 @@ public class Koopa : MonoBehaviour
 
     private void Hit()
     {
+        AudioSource.PlayClipAtPoint(kickSound, transform.position);
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
         Destroy(gameObject, 3f);
