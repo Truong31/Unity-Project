@@ -18,12 +18,14 @@ public class GameManager : MonoBehaviour
     public int coins { get; private set; }
 
     private bool isMuted = false;
+    private bool isPaused = false;
 
     public AudioClip mariodieSound;
     public AudioClip gameOverSound;
     public AudioClip newStageSound;
     public AudioClip newWorldSound;
     public AudioClip backGroundSond;
+    public AudioClip pauseSound;
     public AudioSource audioSource;
     public AudioSource coinSound;
     private void Awake()
@@ -52,9 +54,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             Muted();
+        }else if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!isPaused)
+            {
+                Paused();
+            }
+            else
+            {
+                Resume();
+            }
         }
     }
     private void NewGame()
@@ -130,5 +142,23 @@ public class GameManager : MonoBehaviour
     {
         isMuted = !isMuted;
         AudioListener.volume = isMuted ? 0 : 1;
+    }
+
+    private void Paused()
+    {
+        isPaused = true;
+        AudioSource.PlayClipAtPoint(pauseSound, Camera.main.transform.position);
+        Time.timeScale = 0;
+    }
+
+    private void Resume()
+    {
+        isPaused = false;
+        Time.timeScale = 1;
+        AudioSource.PlayClipAtPoint(pauseSound, Camera.main.transform.position);
+    }
+    private void PlayPauseSound()
+    {
+        AudioSource.PlayClipAtPoint(pauseSound, Camera.main.transform.position);
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 56436269da422084a9118d1e834f199f
+guid: dd9d391d63e75a0489c6127a6ddba61a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Retro Gaming
+  - mago3
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 2
