@@ -35,6 +35,7 @@ public class Goomba : MonoBehaviour
     private void Flatten()
     {
         AudioSource.PlayClipAtPoint(kickSound, transform.position);
+        GameManager.Instance.AddScore();
         GetComponent<Collider2D>().enabled = false;
         GetComponent<EntityMovement>().enabled = false;
         GetComponent<AnimatedSprite>().enabled = false;       
@@ -45,6 +46,7 @@ public class Goomba : MonoBehaviour
     private void Hit()
     {
         AudioSource.PlayClipAtPoint(kickSound, transform.position);
+        GameManager.Instance.AddScore();
         GetComponent<AnimatedSprite>().enabled = false;
         GetComponent<DeathAnimation>().enabled = true;
         Destroy(gameObject, 3f);

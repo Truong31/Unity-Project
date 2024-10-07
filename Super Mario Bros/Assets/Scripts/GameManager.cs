@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     /*
      FireFlower, giu Mario o trang thai Grown khi sang man moi
-     Them sound, UI
+     Them UI
      Chuyen doi giua cac man(chuyen doi World va Stage, chet o man nao thi hoi sinh o man do)
      */
     public static GameManager Instance { get; private set; }
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public int stage { get; private set; }
     public int lives { get; private set; }
     public int coins { get; private set; }
+    public int scores { get; private set; }
 
     private bool isMuted = false;
     private bool isPaused = false;
@@ -28,6 +30,13 @@ public class GameManager : MonoBehaviour
     public AudioClip pauseSound;
     public AudioSource audioSource;
     public AudioSource coinSound;
+
+
+    public Text scoreText;
+    public Text livesText;
+    public Text coinsText;
+    public Text timeText;
+    public Text worldText;
     private void Awake()
     {
         if(Instance != null)
@@ -72,7 +81,15 @@ public class GameManager : MonoBehaviour
     private void NewGame()
     {
         lives = 3;
+        livesText.text = lives.ToString();
+
         coins = 0;
+        coinsText.text = coins.ToString();
+
+        scores = 0;
+        scoreText.text = scores.ToString();
+
+        timeText.text = 0 * Time.deltaTime + "";
         LoadLevel(1, 1);
     }
     public void LoadLevel(int world, int stage)
@@ -82,6 +99,7 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
         this.world = world;
         this.stage = stage;
+        worldText.text = ($"{world}-{stage}");
         SceneManager.LoadScene($"{world}-{stage}");     //Chuoi noi suy
                                                         //$"{world}-{stage}" = "world + "-" + stage"
     }
@@ -89,7 +107,8 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         lives--;
-        if(lives > 0)
+        livesText.text = lives.ToString();
+        if (lives > 0)
         {
             LoadLevel(world, stage);
         }
@@ -126,6 +145,7 @@ public class GameManager : MonoBehaviour
     {
         coinSound.Play();
         coins++;
+        coinsText.text = coins.ToString();
         if(coins == 100)
         {
             AddLife();
@@ -136,6 +156,12 @@ public class GameManager : MonoBehaviour
     public void AddLife()
     {
         lives++;
+        livesText.text = lives.ToString();
+    }
+    public void AddScore()
+    {
+        scores += 100;
+        scoreText.text = scores.ToString();
     }
 
     public void Muted()
@@ -161,4 +187,5 @@ public class GameManager : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(pauseSound, Camera.main.transform.position);
     }
+
 }
