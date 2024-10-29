@@ -24,6 +24,7 @@ public class MarioMovement : MonoBehaviour
     public bool sliding => (inputAxis > 0f && velocity.x < 0f) || (inputAxis < 0f && velocity.x > 0f);
 
     public AudioClip jumpSound;
+    public AudioSource audioSource;
     private void Awake()
     {
         collider = GetComponent<Collider2D>();
@@ -82,7 +83,8 @@ public class MarioMovement : MonoBehaviour
         {
             velocity.y = jumpForce;
             jumping = true;
-            AudioSource.PlayClipAtPoint(this.jumpSound, transform.position);
+            audioSource.clip = jumpSound;
+            audioSource.Play();
         }
     }
 

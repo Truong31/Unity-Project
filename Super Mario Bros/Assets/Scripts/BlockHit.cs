@@ -10,7 +10,7 @@ public class BlockHit : MonoBehaviour
 
     private bool animating;
 
-    public AudioClip powerUpAppearSound;
+    public AudioSource powerUpAppearSound;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -40,7 +40,7 @@ public class BlockHit : MonoBehaviour
             
             if(!item.gameObject.CompareTag("BlockCoin"))
             {
-                AudioSource.PlayClipAtPoint(powerUpAppearSound, transform.position);
+                powerUpAppearSound.Play();
             }
             Instantiate(item, transform.position, Quaternion.identity);
         }

@@ -7,9 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     /*
-     FireFlower, giu Mario o trang thai Grown khi sang man moi
-     Them UI
-     Chuyen doi giua cac man(chuyen doi World va Stage, chet o man nao thi hoi sinh o man do)
+     Xu ly Koopa(khi va vao tuong goopa khong thay doi huong quay, khi cac koopa va vao nhau chung cung se tu dong doi huong(Tham khao Goomba))
+     Tao chuyen dong len xuong cho Bar(Man 3)
      */
     public static GameManager Instance { get; private set; }
 
@@ -18,15 +17,18 @@ public class GameManager : MonoBehaviour
     public int lives { get; private set; }
     public int coins { get; private set; }
     public int scores { get; private set; }
+    public float time = 0;
 
     private bool isMuted = false;
     private bool isPaused = false;
+    public bool isBig = false;
+    public bool isEndStage = false;
 
     public AudioClip mariodieSound;
     public AudioClip gameOverSound;
     public AudioClip newStageSound;
     public AudioClip newWorldSound;
-    public AudioClip backGroundSond;
+    public AudioClip backGroundSound;
     public AudioClip pauseSound;
     public AudioSource audioSource;
     public AudioSource coinSound;
@@ -49,11 +51,6 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    private void OnDestroy()
-    {
-        if (Instance == this)
-            Instance = null;
-    }
 
     private void Start()
     {
@@ -63,6 +60,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isEndStage)
+        {
+            AddTime();
+        }
         if (Input.GetKeyDown(KeyCode.M))
         {
             Muted();
@@ -78,6 +79,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
     private void NewGame()
     {
         lives = 3;
@@ -89,21 +97,22 @@ public class GameManager : MonoBehaviour
         scores = 0;
         scoreText.text = scores.ToString();
 
-        timeText.text = 0 * Time.deltaTime + "";
+        isEndStage = false;
+        timeText.text = 0 + "";
         LoadLevel(1, 1);
     }
     public void LoadLevel(int world, int stage)
     {
-        audioSource.clip = backGroundSond;
+        audioSource.clip = backGroundSound;
         audioSource.loop = true;
         audioSource.Play();
         this.world = world;
         this.stage = stage;
         worldText.text = ($"{world}-{stage}");
         SceneManager.LoadScene($"{world}-{stage}");     //Chuoi noi suy
-                                                        //$"{world}-{stage}" = "world + "-" + stage"
+                                                        //$"{world}-{stage}" = "world" + "-" + "stage"
     }
-    
+
     public void ResetLevel()
     {
         lives--;
@@ -136,9 +145,15 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         Invoke(nameof(NewGame), 4f);
+        isEndStage = true;
         audioSource.clip = gameOverSound;
         audioSource.loop = false;
         audioSource.Play();
+    }
+
+    public void isMarioBig(bool value)
+    {
+        isBig = value;
     }
 
     public void AddCoin()
@@ -164,6 +179,12 @@ public class GameManager : MonoBehaviour
         scoreText.text = scores.ToString();
     }
 
+    private void AddTime()
+    {
+        time += Time.deltaTime;
+        int second = Mathf.FloorToInt(time);
+        timeText.text = second + "";
+    }
     public void Muted()
     {
         isMuted = !isMuted;
