@@ -10,6 +10,11 @@ public class Koopa : MonoBehaviour
     private bool pushed;
 
     public AudioSource kickSound;
+
+    private void Update()
+    {
+        SpriteDirection();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!shelled && collision.gameObject.CompareTag("Player"))
@@ -28,6 +33,7 @@ public class Koopa : MonoBehaviour
                 player.Hit();
             }
         }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -91,6 +97,19 @@ public class Koopa : MonoBehaviour
         if (pushed)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void SpriteDirection()
+    {
+        EntityMovement move = GetComponent<EntityMovement>();
+        if(move.direction.x < 0)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
     }
 }

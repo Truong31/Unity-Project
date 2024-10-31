@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Brick
   - BlockCoin
+  - UndergroundBrick
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     /*
-     Xu ly Koopa(khi va vao tuong goopa khong thay doi huong quay, khi cac koopa va vao nhau chung cung se tu dong doi huong(Tham khao Goomba))
      Tao chuyen dong len xuong cho Bar(Man 3)
      */
     public static GameManager Instance { get; private set; }
@@ -98,11 +97,13 @@ public class GameManager : MonoBehaviour
         scoreText.text = scores.ToString();
 
         isEndStage = false;
-        timeText.text = 0 + "";
+        time = 0;
+        timeText.text = time.ToString();
         LoadLevel(1, 1);
     }
     public void LoadLevel(int world, int stage)
     {
+        isBig = false;
         audioSource.clip = backGroundSound;
         audioSource.loop = true;
         audioSource.Play();
