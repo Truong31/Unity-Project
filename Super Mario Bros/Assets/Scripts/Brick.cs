@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
+    //NOTE: xu ly hieu ung vo gach khi bi Big Mario va cham
+
     public GameObject brickBrokenPrefabs;
     public float explosionForce = 10;
-
     public void BreakBrickAnimation()
     {
         GameObject brokenBrick = Instantiate(brickBrokenPrefabs, transform.position, Quaternion.identity);
@@ -16,13 +17,10 @@ public class Brick : MonoBehaviour
         foreach (Rigidbody2D rigidbody in pieces)
         {
             Vector2 explosionDirection = rigidbody.transform.position - transform.position;
-            float distance = explosionDirection.magnitude;
-            if(distance <= 2)
-            {
-                float force = explosionForce * (1 - (distance / 2f));
-                rigidbody.AddForce(explosionDirection.normalized * force, ForceMode2D.Impulse);
-            }
+            rigidbody.AddForce(explosionDirection.normalized * explosionForce, ForceMode2D.Impulse);
+            Destroy(rigidbody.gameObject, 3.0f);
         }
         Destroy(gameObject);
+            
     }
 }

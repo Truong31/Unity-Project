@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockCoin : MonoBehaviour
 {
+    //NOTE: Script nay xu ly hieu ung khi Mario va cham voi 1 khoi Block hoac Brick co chua Coin ben trong
+
     private void Start()
     {
         GameManager.Instance.AddCoin();
@@ -21,6 +23,7 @@ public class BlockCoin : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //NOTE: xu ly di chuyen cho Coin
     private IEnumerator Move(Vector3 from, Vector3 to)
     {
         float elapsed = 0f;

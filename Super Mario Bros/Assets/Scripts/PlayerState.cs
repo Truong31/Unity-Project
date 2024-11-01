@@ -1,9 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
+    //NOTE: Xử lý các hiệu ứng Mario khi thu thập các Item sức mạnh
+
     public static PlayerState Instance { get; private set; }
 
     public PlayerSpriteRenderer smallRenderer;
@@ -40,6 +42,8 @@ public class PlayerState : MonoBehaviour
             skipGrowEffect = false;
         }
     }
+
+    //NOTE: Xử lý khi Mario va chạm với vật thể khác(Enemy)
     public void Hit()
     {
         if(!dead && !starPower)
@@ -57,6 +61,7 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    //NOTE: Bật Script deathAnimation nếu Mario chết
     private void Death()
     {
         smallRenderer.enabled = false;
@@ -66,7 +71,7 @@ public class PlayerState : MonoBehaviour
         GameManager.Instance.ResetLevelAfter(3.0f);
     }
 
-
+    //NOTE: Xử lý thu nhỏ Mario
     private void Shrink()
     {
         smallRenderer.enabled = true;
@@ -83,6 +88,7 @@ public class PlayerState : MonoBehaviour
         StartCoroutine(ScaleAnimation());
     }
 
+    //NOTE: Xử lý phóng to Mario
     public void Grow()
     {
         smallRenderer.enabled = false;
@@ -109,17 +115,18 @@ public class PlayerState : MonoBehaviour
             mario.maxJumpHeight = 5.5f;
         }
     }
-
+    
+    //NOTE: Tạo hiệu ứng nhấp nháy khi Mario thu nhỏ hoặc biến to
     private IEnumerator ScaleAnimation()
     {
-        float elapsed = 0f;
-        float duration = 0.5f;
+        float elapsed = 0f;     //Thời gian trôi qua (bộ đếm thời gian)
+        float duration = 0.5f;      //Lượng thời gian hoạt động
 
         while(elapsed < duration)
         {
             elapsed += Time.deltaTime;
 
-            if(Time.frameCount % 6 == 0)
+            if(Time.frameCount % 6 == 0)        //Cứ mỗi 6 khung hình thì if hoạt động (các ảnh Big và Small sẽ được bật thay phiên nhau)
             {
                 smallRenderer.enabled = !smallRenderer.enabled;
                 bigRenderer.enabled = !smallRenderer.enabled;
@@ -132,6 +139,7 @@ public class PlayerState : MonoBehaviour
         activeRenderer.enabled = true;
     }
 
+    //NOTE: Gọi hàm này khi Mario ăn được StarPower
     public void StarPower(float duration = 10f)
     {
         audioSource.clip = powerUpSound;
@@ -139,6 +147,7 @@ public class PlayerState : MonoBehaviour
         StartCoroutine(StarPowerAnimation(duration));
     }
 
+    //NOTE: Tạo hiệu ứng đổi màu khi Mario ăn được StarPower
     private IEnumerator StarPowerAnimation(float duration)
     {
         starPower = true;
@@ -159,6 +168,11 @@ public class PlayerState : MonoBehaviour
         starPower = false;
     }
 
+    /*
+     *NOTE: Xử lý khi Mario va chạm Brick
+     * Nếu Mario đang ở trạng thái Big ==> khi va chạm Brick sẽ xuất hiện hiệu ứng Broken(được viết trong Script Brick)
+     * Nếu Mario đang ở trạng thái nhỏ, hoặc khối Brick có chứa Item ==> không có hiệu ứng
+     */
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Brick"))

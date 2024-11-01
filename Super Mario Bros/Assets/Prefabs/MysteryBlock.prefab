@@ -147,8 +147,7 @@ MonoBehaviour:
   item: {fileID: 0}
   maxHit: -1
   emptySprite: {fileID: 0}
-  powerUpAppearSound: {fileID: 8300000, guid: 7990407bbc139b74ea772e57f5d4fdfd, type: 3}
-  audioSource: {fileID: -7335048836960417029}
+  powerUpAppearSound: {fileID: -7335048836960417029}
 --- !u!82 &-7335048836960417029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -159,7 +158,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7990407bbc139b74ea772e57f5d4fdfd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

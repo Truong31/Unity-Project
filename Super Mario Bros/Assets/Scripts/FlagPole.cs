@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FlagPole : MonoBehaviour
 {
+    //NOTE: xu ly khi Mario cham vao Flag
+
     public Transform flag;
     public Transform poleBottom;
     public Transform castle;
@@ -36,7 +38,7 @@ public class FlagPole : MonoBehaviour
 
         player.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(6f);
 
         GameManager.Instance.LoadLevel(nextWorld, nextStage);
         GameManager.Instance.isEndStage = false;

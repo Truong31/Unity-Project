@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockHit : MonoBehaviour
 {
+    //NOTE: Xu ly khi Mario va cham voi Block hoac Brick
+
     public GameObject item;
     public int maxHit = -1;
     public Sprite emptySprite;
@@ -16,7 +18,6 @@ public class BlockHit : MonoBehaviour
     {
         if (!animating && collision.gameObject.CompareTag("Player"))
         {
-            PlayerState player = collision.gameObject.GetComponent<PlayerState>();
             if (collision.transform.DotTest(transform, Vector2.up))
             {
                 Hit();
@@ -24,9 +25,9 @@ public class BlockHit : MonoBehaviour
         }
     }
 
+    //NOTE: xu ly khi va cham
     private void Hit()
     {
-        BlockCoin blockCoin = GetComponent<BlockCoin>();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = true;
 
@@ -48,6 +49,8 @@ public class BlockHit : MonoBehaviour
         StartCoroutine(Animate());
     }
 
+
+    //NOTE: hieu ung cua khoi Block khi bi va cham voi Mario
     private IEnumerator Animate()
     {
         animating = true;

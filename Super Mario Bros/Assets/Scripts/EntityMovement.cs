@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EntityMovement : MonoBehaviour
 {
+    //NOTE: Script viet chung cho chuyen dong cua cac vat the khac(Goomba, Koopa, cac Item Power)
+
     private new Rigidbody2D rigidbody;
     private Vector2 velocity;
 
@@ -44,7 +46,7 @@ public class EntityMovement : MonoBehaviour
 
         rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
 
-        if (rigidbody.Raycast(direction))
+        if (rigidbody.Raycast(direction))     //Phat hien vat can
         {
             direction = -direction;
         }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockItem : MonoBehaviour
 {
+    //NOTE: Script xu ly hieu ung xuat hien cho cac Item Power(tru Coin) 
+
     private void Start()
     {
         StartCoroutine(Animate());
@@ -16,7 +18,7 @@ public class BlockItem : MonoBehaviour
         BoxCollider2D triggerCollider = GetComponent<BoxCollider2D>();
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
 
-        rigidbody.isKinematic = true;
+        rigidbody.isKinematic = true;       //Vat the se khong chiu cac anh huong cac va cham vat ly(trong luc, ma sat...)
         physicCollider.enabled = false;
         triggerCollider.enabled = false;
         spriteRenderer.enabled = false;
@@ -24,6 +26,12 @@ public class BlockItem : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         spriteRenderer.enabled = true;
+
+        /*
+        Viec tat va bat lai Sprite la vi khi Mario va cham voi Brick, 
+        Brick se co hieu ung nang nhe len roi ha xuong(hieu ung duoc viet trong Script BlockHit)
+        nen viec tat Sprite di giup khi Brick bi nang nen khong de lo ra Sprite cua Power
+         */
 
         float elapsed = 0f;
         float duration = 0.5f;

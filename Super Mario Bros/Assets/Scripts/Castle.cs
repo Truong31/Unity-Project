@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Castle : MonoBehaviour
 {
+    //NOTE: tao chuyen dong cho Mario xuong duoi mat dat khi bat dau Scene 2
+
     public Transform entrance;
     public Transform pipePosition;
     public float Speed = 1f;

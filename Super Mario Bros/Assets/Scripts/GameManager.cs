@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    /*
-     Tao chuyen dong len xuong cho Bar(Man 3)
-     */
     public static GameManager Instance { get; private set; }
 
     public int world { get; private set; }

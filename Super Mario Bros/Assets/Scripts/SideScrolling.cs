@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SideScrolling : MonoBehaviour
 {
+    //NOTE: dieu chinh Camera di theo Mario 
+
     private Transform player;
 
     public float height = 7f;

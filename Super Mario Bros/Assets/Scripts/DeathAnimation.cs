@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DeathAnimation : MonoBehaviour
 {
+    //NOTE: xu ly khi Mario chet
+
     public SpriteRenderer spriteRenderer;
     public Sprite deadSprite;
 
@@ -53,9 +55,10 @@ public class DeathAnimation : MonoBehaviour
         }
     }
 
+    //NOTE: hieu ung cho Mario khi chet
     private IEnumerator Animate()
     {
-        float elaped = 0f;
+        float elapsed = 0f;
         float duration = 3f;
 
         float jumpVelocity = 10f;
@@ -63,11 +66,11 @@ public class DeathAnimation : MonoBehaviour
 
         Vector3 velocity = Vector3.up * jumpVelocity;
 
-        while(elaped < duration)
+        while(elapsed < duration)
         {
             transform.position += velocity * Time.deltaTime;
             velocity.y += gravity * Time.deltaTime;
-            elaped += Time.deltaTime;
+            elapsed += Time.deltaTime;
             yield return null;
         }
     }
