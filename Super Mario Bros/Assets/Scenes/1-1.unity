@@ -13604,6 +13604,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 220261026}
     - target: {fileID: 7962652445767650434, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
+      propertyPath: maxJumpTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962652445767650434, guid: 64ad359d931387343adebdad064ffd1d, type: 3}
       propertyPath: maxJumpHeight
       value: 4.5
       objectReference: {fileID: 0}
