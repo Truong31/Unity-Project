@@ -38,7 +38,7 @@ public class FlagPole : MonoBehaviour
 
         player.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(0.5f);
 
         GameManager.Instance.LoadLevel(nextWorld, nextStage);
         GameManager.Instance.isEndStage = false;

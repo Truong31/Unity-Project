@@ -3550,6 +3550,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9029498055473357641, guid: ea3bffd59bc6462438eb14c68dc5c552, type: 3}
   m_PrefabInstance: {fileID: 229097340}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &233345860 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8880385264756098905, guid: 7b6933b6131f69c4080eefafc478e986, type: 3}
+  m_PrefabInstance: {fileID: 1522170227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &236499014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7425,11 +7430,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5581559915863537273, guid: 1a3c5a17963f23e4d9781797422ee21f, type: 3}
   m_PrefabInstance: {fileID: 536129000}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &551994842 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5695811111283370527, guid: 7b6933b6131f69c4080eefafc478e986, type: 3}
-  m_PrefabInstance: {fileID: 1522170227}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &558121019
 PrefabInstance:
@@ -20169,9 +20169,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe3c9dfe992bf4f97c28e9bff9850b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   entrance: {fileID: 356328775}
-  pipePosition: {fileID: 551994842}
-  Speed: 6
+  pipePosition: {fileID: 233345860}
 --- !u!1001 &1476332764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20950,11 +20950,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695811111283370527, guid: 7b6933b6131f69c4080eefafc478e986, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5695811111283370527, guid: 7b6933b6131f69c4080eefafc478e986, type: 3}
       propertyPath: m_LocalPosition.y
       value: -15.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880385264756098905, guid: 7b6933b6131f69c4080eefafc478e986, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8880385264756098905, guid: 7b6933b6131f69c4080eefafc478e986, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
