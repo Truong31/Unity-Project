@@ -56,9 +56,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isEndStage)
+        if (!isEndStage && time >= 1)
         {
-            AddTime();
+            MinusTime();
+            if (time < 1)
+            {
+                GameOver();
+            }
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
@@ -94,7 +98,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = scores.ToString();
 
         isEndStage = false;
-        time = 0;
+        time = 390;
         timeText.text = time.ToString();
         LoadLevel(1, 1);
     }
@@ -108,7 +112,7 @@ public class GameManager : MonoBehaviour
         this.stage = stage;
         worldText.text = ($"{world}-{stage}");
         SceneManager.LoadScene($"{world}-{stage}");     //Chuoi noi suy
-                                                        //$"{world}-{stage}" = "world" + "-" + "stage"
+                                                        //$"{world}-{stage}" = world + "-" + stage
     }
 
     public void ResetLevel()
@@ -177,9 +181,9 @@ public class GameManager : MonoBehaviour
         scoreText.text = scores.ToString();
     }
 
-    private void AddTime()
+    private void MinusTime()
     {
-        time += Time.deltaTime;
+        time -= Time.deltaTime;
         int second = Mathf.FloorToInt(time);
         timeText.text = second + "";
     }
